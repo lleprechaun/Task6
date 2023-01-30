@@ -3,6 +3,9 @@ import { $error } from '../logic/errorManager'
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+
+    /*----------------------------------ARGUMENTS----------------------------------*/
+
     const inputs = [
         {
             id: 0,
@@ -29,7 +32,10 @@ const Register = () => {
             value: ''
         }
     ];
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    /*----------------------------------FUNCTIONS----------------------------------*/
+
     async function Auth() {
         validation();
         const response = await $auth.register(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value,)
@@ -37,6 +43,7 @@ const Register = () => {
             navigate('/login');
         }
     }
+
     function validation() {
         const regex = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
         if (!regex.test(inputs[1].value)) {
@@ -46,6 +53,7 @@ const Register = () => {
             return $error.showError('Пароли не совпадают.');
         }
     }
+    /*----------------------------------HTML----------------------------------*/
     return (
         <div className={'flex-column'}>
             {

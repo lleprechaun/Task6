@@ -2,6 +2,16 @@
 class ErrorManager {
 
     showError(error) {
+        if(typeof error === 'object'){
+            Object.keys(error).forEach((key, index) => {
+                this.#show(error[key])
+            })
+        } else {
+            this.#show(error)
+        }
+    }
+
+    #show(error) {
         const errorArea = document.createElement('div')
         errorArea.innerHTML = `<label class="error-label">
                                 <input type="checkbox" class="errorCheckbox" autoComplete="off"/>
@@ -11,7 +21,7 @@ class ErrorManager {
 		                                <br class="clear"/>
                                         </span>
                                     </div>
-                                </label>`
+                                </label>`;
         document.body.appendChild(errorArea);
 
         setTimeout(() => {
@@ -24,7 +34,6 @@ class ErrorManager {
         setTimeout(() => {
             document.body.removeChild(errorArea);
         },5000)
-
     }
 
 }

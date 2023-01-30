@@ -10,6 +10,9 @@ html,body{
 a{
     color: #ba1313fb;
 }
+
+/*-------------------------------------GENERAL CLASSES-------------------------------------*/
+
 .app{
 
 }
@@ -55,9 +58,30 @@ a{
     font-size: 15px;
 }
 
+/*-------------------------------------START-------------------------------------*/
 
 .start{
     margin-top: 10%;
+}
+
+
+.test-content{
+    margin-top: 10%;
+}
+.test_test-btn{
+    display: flex;
+    flex-direction: row;
+}
+.test-btn{
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.test-btn:hover{
+    background-color: #ba13132d;
 }
 
 /*-------------------------------------ERROR MESSAGE-------------------------------------*/

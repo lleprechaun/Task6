@@ -28,7 +28,7 @@ class AuthManager {
                     'Content-Type': 'application/json',
                     'Authorization': authorization
                 },
-                body: JSON.stringify(request)
+                // body: JSON.stringify(request)
             })).json()
         } catch (err) {
             return $error.showError(err)

@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { Register } from "../components/Register";
 
 const RegisterPage = () => {
+
+    /*----------------------------------HTML----------------------------------*/
+
     return (
         <div className={'flex-column auth-content'}>
             <h1>Регистрация</h1>

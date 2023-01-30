@@ -1,8 +1,11 @@
-import { $auth } from '../logic/authManager'
 import { useNavigate } from "react-router-dom";
 import { $error } from '../logic/errorManager'
+import { $auth } from '../logic/authManager'
 
 const Login = () => {
+
+    /*----------------------------------ARGUMENTS----------------------------------*/
+
     const inputs = [
         {
             id: 0,
@@ -18,21 +21,30 @@ const Login = () => {
         }
     ];
     const navigate = useNavigate();
+
+    /*----------------------------------FUNCTIONS----------------------------------*/
+
     async function Auth() {
         validation();
         const response = await $auth.login(inputs[0].value, inputs[1].value)
         console.log(response)
         if (response?.status){
             $auth.setToken(response.data.access_token)
-            navigate('/');
+            navigate('/start');
+        } else if (response) {
+            return $error.showError(response?.errors)
         }
     }
+
     function validation() {
         const regex = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
         if (!regex.test(inputs[0].value)) {
             return $error.showError('Email недействителен.');
         }
     }
+
+    /*----------------------------------HTML----------------------------------*/
+
     return (
         <div className={'flex-column'}>
             {
