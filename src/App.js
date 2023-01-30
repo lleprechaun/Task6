@@ -6,13 +6,15 @@ import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
-      <Router>
-        <Routes>
-            <Route exact path="/" element={ <HomePage /> } />
-            <Route exact path="/login" element={ <LoginPage /> } />
-            <Route exact path="/register" element={ <RegisterPage /> } />
-        </Routes>
-      </Router>
+      <div className={'app'}>
+        <Router>
+            <Routes>
+                <Route exact path="/" element={ <HomePage /> } />
+                <Route exact path="/login" element={ <LoginPage /> } />
+                <Route exact path="/register" element={ <RegisterPage /> } />
+            </Routes>
+        </Router>
+      </div>
   );
 }
 

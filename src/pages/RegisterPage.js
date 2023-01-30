@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import { Register } from "../components/Register";
 
 const RegisterPage = () => {
     return (
-        <div>
+        <div className={'flex-column auth-content'}>
             <h1>Регистрация</h1>
-            <p>Есть аккаунт? <Link to='/login'>Войти</Link></p>
+            <Register />
+            <p className={'auth-text'}>Есть аккаунт? <Link to='/login'>Войти</Link></p>
         </div>
     )
 }

@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+html,body{
+    margin: 0;
+    padding: 0;
+}
+#root{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+a{
+    color: #ba1313fb;
+}
+.app{
+
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.input{
+    border-radius: 5px;
+    border: 2px solid #ba1313fb;
+    background-color: #dedcdc;
+    color: black;
+    text-align: center;
+    padding: 10px 15px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+::placeholder{
+    text-align: center;
+}
+.button{
+    border-radius: 5px;
+    border: 2px solid #ba1313fb;
+    background-color: #ba1313fb;
+    color: white;
+    padding: 10px 15px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*-------------------------------------LOGIN + REGISTER-------------------------------------*/
+
+.auth-content{
+    margin-top: 10%;
+}
+.auth-text{
+    color: gray;
+    font-size: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.start{
+    margin-top: 10%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/*-------------------------------------ERROR MESSAGE-------------------------------------*/
 
-.App-link {
-  color: #61dafb;
+.errorCheckbox {
+    display: none;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.alert {
+    position: relative;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+    line-height: 1.8;
+    border-radius: 5px;
+    font-family: sans-serif;
+    font-weight: 400;
+    transition: opacity 0.4s, visibility 0.4s;
+}
+.error {
+    background-color: #ba13132d;
+    border: 1px solid #EDD;
+    color: #A66;
+}
+.errorText {
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+}
+.clear {
+    clear: both;
 }
