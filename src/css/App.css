@@ -84,6 +84,9 @@ a{
 .test-btn:hover{
     background-color: #ba13132d;
 }
+.test-input{
+    width: auto;
+}
 
 /*-------------------------------------RESULT-------------------------------------*/
 

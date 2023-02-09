@@ -42,6 +42,7 @@ const TestPage = () => {
     useEffect(() => {
         if(token) {
             clearTimer(getDeadTime())
+            console.log(test.answers.length)
         }
     },[])
 
@@ -94,34 +95,57 @@ const TestPage = () => {
         } else {
             return $error.showError(response.errors);
         }
+        document.querySelector('.test-input').value = ''
     }
 
     /*----------------------------------HTML----------------------------------*/
 
-    return token ?(
+    return token ? (
         <div className={'flex-column test-content'}>
             <div className={'flex-column'}>
                 <p>Score: <b>{ test.score }</b></p>
                 <p>Timer: <b>{ timer }</b></p>
                 <p>{ test.question } = <b>?</b></p>
-                <div className={'test_test-btn'}>
-                    <button className={'test-btn'}
-                            onClick={(e) => nextQstn(e.target.innerHTML)}>
-                        {test.answers[0]}
-                    </button>
-                    <button className={'test-btn'}
-                            onClick={(e) => nextQstn(e.target.innerHTML)}>
-                        {test.answers[1]}
-                    </button>
-                    <button className={'test-btn'}
-                            onClick={(e) => nextQstn(e.target.innerHTML)}>
-                        {test.answers[2]}
-                    </button>
-                    <button className={'test-btn'}
-                            onClick={(e) => nextQstn(e.target.innerHTML)}>
-                        {test.answers[3]}
-                    </button>
-                </div>
+                {test.answers.length !== 0 ?
+                    ( <div className={'test_test-btn'}>
+                        <button className={'test-btn'}
+                                onClick={(e) => nextQstn(e.target.innerHTML)}>
+                            {test.answers[0]}
+                        </button>
+                        <button className={'test-btn'}
+                                onClick={(e) => nextQstn(e.target.innerHTML)}>
+                            {test.answers[1]}
+                        </button>
+                        <button className={'test-btn'}
+                                onClick={(e) => nextQstn(e.target.innerHTML)}>
+                            {test.answers[2]}
+                        </button>
+                        <button className={'test-btn'}
+                                onClick={(e) => nextQstn(e.target.innerHTML)}>
+                            {test.answers[3]}
+                        </button>
+                    </div> )
+                    :
+                    (<div className={'flex-column'}>
+                        <div>
+                            <input
+                                className={'input test-input'}
+                                type={'number'}
+                                placeholder={'Ответ'}
+                            />
+                        </div>
+                        <div>
+                            <button
+                                className={'test-btn'}
+                                onClick={(e) => nextQstn(
+                                    document.querySelector('.test-input').value
+                                )}
+                            >
+                                Дальше
+                            </button>
+                        </div>
+                    </div>)
+                }
             </div>
         </div>
     ) :
