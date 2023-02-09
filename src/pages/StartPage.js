@@ -1,6 +1,7 @@
 import { $game } from '../logic/gameManager'
 import { $auth } from "../logic/authManager";
-import { useNavigate } from "react-router-dom";
+import { $error } from "../logic/errorManager";
+import {Navigate, useNavigate } from "react-router-dom";
 
 const StartPage = () => {
 
@@ -8,20 +9,32 @@ const StartPage = () => {
 
     let value = 1;
     const navigate = useNavigate();
+    const token = $auth.getToken();
 
     /*----------------------------------FUNCTIONS----------------------------------*/
 
     async function start() {
         const response = await $game.start(value);
         console.log(response)
-        if (response?.status){
-            navigate('/test/1');
+        if (response?.status) {
+            navigate('/test', {
+                state: {
+                    score: response.data.points,
+                    time: response.data.time,
+                    question: response.data.question,
+                    answers: response.data.options,
+                    type: value
+                }
+            });
+            window.location.reload()
+        } else {
+            return $error.showError();
         }
     }
 
     /*----------------------------------HTML----------------------------------*/
 
-    return (
+    return token ? (
         <div className={'flex-column start'}>
             <div className={'flex-column'}>
                 <h1>Начало</h1>
@@ -37,6 +50,11 @@ const StartPage = () => {
             </div>
         </div>
     )
+        : (
+            <div>
+                <Navigate to={'/login'} />
+            </div>
+        )
 }
 
 export default StartPage

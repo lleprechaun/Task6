@@ -1,6 +1,5 @@
 import { Navigate } from 'react-router-dom';
 import { $auth } from '../logic/authManager'
-import StartPage from "./StartPage";
 
 const HomePage = () => {
 

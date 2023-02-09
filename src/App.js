@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import StartPage from "./pages/StartPage";
 import TestPage from "./pages/TestPage";
+import ResultPage from './pages/ResultPage';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                 <Route exact path="/register" element={ <RegisterPage /> } />
                 <Route exact path="/start" element={ <StartPage /> } />
                 <Route exact path="/test" element={ <TestPage /> } />
+                <Route exact path={'/result'} element={ <ResultPage/> } />
             </Routes>
         </Router>
       </div>

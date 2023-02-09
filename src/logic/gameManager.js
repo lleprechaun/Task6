@@ -4,7 +4,7 @@ import { $auth } from './authManager'
 const urlGame = 'https://internsapi.public.osora.ru/api/game/play';
 
 const authorization = `Basic ${btoa("Dev:qdprivate")}`;
-const token = `Bearer ${$auth.getToken()}`
+const token = `Bearer ${$auth.getToken()}`;
 
 class gameManager {
 
@@ -28,6 +28,26 @@ class gameManager {
         }
     }
 
+    async next(answer, typeHard) {
+        const request = {
+            'answer': answer,
+            'type_hard': typeHard,
+            'type': 2
+        }
+        try {
+            return (await fetch(urlGame, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': authorization,
+                    'X-Access-Token': token
+                },
+                body: JSON.stringify(request)
+            })).json()
+        } catch (err) {
+            return $error.showError(err)
+        }
+    }
 }
 
 const $game = new gameManager();
